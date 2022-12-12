@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "729562699503",
+    "project_id": "cicdlabapp",
+    "storage_bucket": "cicdlabapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729562699503:android:eaffecf8c174116f076d1a",
+        "android_client_info": {
+          "package_name": "com.example.cicdlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729562699503-0q8da53kfidccovb7oq48n7n71romdur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-sYHz8D70Xzsu48rGTm5fqlAm1O1y56k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729562699503-0q8da53kfidccovb7oq48n7n71romdur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
