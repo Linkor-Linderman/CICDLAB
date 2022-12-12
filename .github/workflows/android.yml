@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "master" ]
 env:
-  APP_NAME: app-debug
+  ARTIFACT_NAME: app-debug
   JAVA_VERSION: 11
 jobs:
   build:
@@ -23,8 +23,10 @@ jobs:
   
     - name: Run Kotlin Linter
       uses: ScaCap/action-ktlint@master
+      env:
+        GITHUB_TOKEN: ${{secrets.TOKEN_FOR_GITHUB }}
       with:
-        github_token: ${{ secrets.TOKEN_FOR_GITHUB }}
+        github_token: $GITHUB_TOKEN
         android: true
     
     - name: Grant execute permission for gradlew
@@ -36,8 +38,8 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
-        name: $APP_NAME
-        path: app/build/outputs/apk/debug/$APP_NAME.apk
+        name: $ARTIFACT_NAME
+        path: app/build/outputs/apk/debug/app-debug.apk
   deploy:
     needs: build
     if: ${{ contains(github.event.head_commit.message, 'release') }}
@@ -48,12 +50,14 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.1
         with:
-          name: app-debug
+          name: $ARTIFACT_NAME
         
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
+        env:
+          GROUP_NAME: test-team
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
-          groups: test-team
+          groups: $GROUP_NAME
           file: app-debug.apk
