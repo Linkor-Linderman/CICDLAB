@@ -5,7 +5,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+env:
+  APP_NAME: app-debug
 jobs:
   build:
 
@@ -19,7 +20,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-      
+  
+    - name: Run Kotlin Linter
+      run: ./gradlew ktlintStagingDebugCheck
+    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
@@ -28,10 +32,11 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
-        name: app-debug
+        name: $APP_NAME
         path: app/build/outputs/apk/debug/app-debug.apk
   deploy:
     needs: build
+    if: ${{ contains(github.event.head_commit.message, 'release') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -40,8 +45,7 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: app-debug
-      - name: Display structure of downloaded files
-        run: ls -R
+        
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
         with:
