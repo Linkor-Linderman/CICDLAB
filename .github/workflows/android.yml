@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.1
       with:
         name: apk
-        path: app/build/outputs/apk/debug
+        path: app/build/outputs/apk/debug/app.apk
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: apk
-          path: app/build/outputs/apk/debug
+          path: app/build/outputs/apk/debug/app.apk
         
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
@@ -47,4 +47,4 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: test-team
-          file: app/build/outputs/apk/debug/*.apk
+          file: app/build/outputs/apk/debug/app.apk
