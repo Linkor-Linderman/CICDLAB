@@ -47,4 +47,4 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: test-team
-          file: app/build/outputs/apk/debug/app-debug.apk
+          file: /home/runner/work/CICDLAB/CICDLAB/app/build/outputs/apk/debug/app-debug.apk
