@@ -39,7 +39,6 @@ jobs:
         uses: actions/download-artifact@v3.0.1
         with:
           name: app
-          path: app/build/outputs/apk/debug/app-debug.apk
         
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
@@ -47,4 +46,4 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: test-team
-          file: /home/runner/work/CICDLAB/CICDLAB/app/build/outputs/apk/debug/app-debug.apk
+          file: app/build/outputs/apk/debug/app-debug.apk
