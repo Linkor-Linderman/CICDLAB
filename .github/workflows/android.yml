@@ -50,7 +50,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.1
         with:
-          name: $ARTIFACT_NAME
+          name: ${{ env.ARTIFACT_NAME}}
         
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
