@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Docs</title>
+</head>
+<body>
+    <h1>Pipeline CICDLAB</h1>
+    <h2>Jobs</h2>
+    <ol>
+        <li>build</li>
+        <li>deploy</li>
+    </ol>
+    
+    <h2>Build</h2>
+    <p>Собирает приложение, делает проверку кода</p>
+    <h4>Steps</h4>
+    <ol>
+        <li>Set up JDK 11</li>
+        <li>Run Kotlin Linter</li>
+        <li>Grant execute permission for gradlew</li>
+        <li>Grant execute permission for gradlew</li>
+        <li>Upload a Build Artifact</li>
+    </ol>
+    <h4>Артефакты</h4>
+    <ul>
+        <li>Apk файл</li>
+    </ul>
+
+    <h2>Deploy</h2>
+    <p>Деплоит приложение</p>
+    <h4>Шаги</h4>
+    <ol>
+        <li>Download a Build Artifact</li>
+        <li>Upload artifact to Firebase App Distribution</li>
+    </ol>
+</body>
+</html>
