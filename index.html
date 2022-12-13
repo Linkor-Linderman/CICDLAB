@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Pipeline CICDLAB</h1>
+    <h2>Trigger</h2>
+    <p>В качестве триггеров для запуска pipline были выбраны push и pull request в главную ветку</p>
     <h2>Jobs</h2>
     <ol>
         <li>build</li>
@@ -16,6 +18,8 @@
     
     <h2>Build</h2>
     <p>Собирает приложение, делает проверку кода</p>
+    <h4>Runs on</h4>
+    <p>Этот workflow(рабочий процесс) выполняется в дистрибутиве Ubuntu.</p>
     <h4>Steps</h4>
     <ol>
         <li>Set up JDK 11</li>
@@ -31,6 +35,12 @@
 
     <h2>Deploy</h2>
     <p>Деплоит приложение</p>
+    <h4>Needs</h4>
+    <p>Чтобы началася работа этого job необходимо выполнения build </p>
+    <h4>Condition</h4>
+    <p>Для того, чтобы запустился этот рабочий процеес необходимо, чтобы в названии коммита было слово release</p>
+    <h4>Runs on</h4>
+    <p>Этот workflow(рабочий процесс) выполняется в дистрибутиве Ubuntu.</p>
     <h4>Шаги</h4>
     <ol>
         <li>Download a Build Artifact</li>
